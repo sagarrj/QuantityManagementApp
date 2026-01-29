@@ -12,10 +12,13 @@ public class QuantityManagementAppApplication {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("enter first value:");
 		String value1 = br.readLine();
+
 		System.out.println("enter second value:");
 		String value2 = br.readLine();
+
 		Feet feet1 = new Feet(Double.parseDouble(value1));
 		Feet feet2 = new Feet(Double.parseDouble(value2));
+
 		System.out.println(feet1.equals(feet2));
 	}
 
