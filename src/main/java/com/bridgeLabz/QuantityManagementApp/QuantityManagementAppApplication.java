@@ -9,17 +9,56 @@ public class QuantityManagementAppApplication {
 
 	public static void main(String[] args) throws IOException {
 
-		checkFeetEquality();
-		checkInchEquality();
+//		checkFeetEquality();
+//		checkInchEquality();
+		checkGenericEquality();
+	}
+
+	private static void checkGenericEquality() throws IOException {
+		QuantityLength q1, q2;
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		//first quantity
+		System.out.println("enter first value:");
+		String value1 = br.readLine();
+
+		System.out.println("enter unit:");
+		String unit1 = br.readLine();
+		try{
+			LengthUnit lengthUnit1 = LengthUnit.valueOf(unit1.toUpperCase());
+			q1 = new QuantityLength(Double.parseDouble(value1),lengthUnit1);
+		}catch (NumberFormatException e){
+			System.out.println("Invalid input. Please enter numeric values.");
+			return;
+		}
+
+
+		//second quantity
+		System.out.println("enter second value:");
+		String value2 = br.readLine();
+
+		System.out.println("enter unit:");
+		String unit2 = br.readLine();
+		try{
+			LengthUnit lengthUnit2 = LengthUnit.valueOf(unit2.toUpperCase());
+			q2 = new QuantityLength(Double.parseDouble(value2),lengthUnit2);
+		}catch (NumberFormatException e){
+			System.out.println("Invalid input. Please enter numeric values.");
+			return;
+		}
+
+		//check equality
+		System.out.println(q1.equals(q2));
+
 	}
 
 	private static void checkFeetEquality() throws IOException {
-		Measurement feet1, feet2;
+		QuantityLength feet1, feet2;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("enter first ft. value:");
 		String value1 = br.readLine();
 		try{
-			feet1 = new Measurement(Double.parseDouble(value1), Unit.FEET);
+			feet1 = new QuantityLength(Double.parseDouble(value1), LengthUnit.FEET);
 		}catch (NumberFormatException e){
 			System.out.println("Invalid input. Please enter numeric values.");
 			return;
@@ -28,7 +67,7 @@ public class QuantityManagementAppApplication {
 		System.out.println("enter second ft. value:");
 		String value2 = br.readLine();
 		try{
-			feet2 = new Measurement(Double.parseDouble(value2), Unit.FEET);
+			feet2 = new QuantityLength(Double.parseDouble(value2), LengthUnit.FEET);
 		}catch (NumberFormatException e){
 			System.out.println("Invalid input. Please enter numeric values.");
 			return;
@@ -38,12 +77,12 @@ public class QuantityManagementAppApplication {
 	}
 
 	private static void checkInchEquality() throws IOException {
-		Measurement inch1, inch2;
+		QuantityLength inch1, inch2;
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.println("enter first inch value:");
 		String value1 = br.readLine();
 		try{
-			inch1 = new Measurement(Double.parseDouble(value1), Unit.INCH);
+			inch1 = new QuantityLength(Double.parseDouble(value1), LengthUnit.INCH);
 		}catch (NumberFormatException e){
 			System.out.println("Invalid input. Please enter numeric values.");
 			return;
@@ -52,7 +91,7 @@ public class QuantityManagementAppApplication {
 		System.out.println("enter second inch value:");
 		String value2 = br.readLine();
 		try{
-			inch2 = new Measurement(Double.parseDouble(value2),Unit.INCH);
+			inch2 = new QuantityLength(Double.parseDouble(value2), LengthUnit.INCH);
 		}catch (NumberFormatException e){
 			System.out.println("Invalid input. Please enter numeric values.");
 			return;
