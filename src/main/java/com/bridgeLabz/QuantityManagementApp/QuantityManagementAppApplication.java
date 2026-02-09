@@ -4,6 +4,7 @@ package com.bridgeLabz.QuantityManagementApp;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 public class QuantityManagementAppApplication {
 
@@ -22,7 +23,7 @@ public class QuantityManagementAppApplication {
 		System.out.println("enter first value:");
 		String value1 = br.readLine();
 
-		System.out.println("enter unit:");
+		System.out.println("enter unit:"  + Arrays.toString(LengthUnit.values()));
 		String unit1 = br.readLine();
 		try{
 			LengthUnit lengthUnit1 = LengthUnit.valueOf(unit1.toUpperCase());
@@ -37,7 +38,7 @@ public class QuantityManagementAppApplication {
 		System.out.println("enter second value:");
 		String value2 = br.readLine();
 
-		System.out.println("enter unit:");
+		System.out.println("enter unit:"  + Arrays.toString(LengthUnit.values()));
 		String unit2 = br.readLine();
 		try{
 			LengthUnit lengthUnit2 = LengthUnit.valueOf(unit2.toUpperCase());
