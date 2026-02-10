@@ -13,14 +13,14 @@ public class QuantityManagementAppApplication {
 	}
 
 	private static void convertLength() throws IOException {
-        QuantityLength q1;
+        QuantityLength q1,q2;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         //first quantity
         System.out.println("enter first value:");
         String strValue1 = br.readLine();
 
-        System.out.println("enter source unit:" + Arrays.toString(LengthUnit.values()));
+        System.out.println("enter first unit:" + Arrays.toString(LengthUnit.values()));
         String unit1 = br.readLine();
         LengthUnit lengthUnit1;
         double value1;
@@ -33,23 +33,35 @@ public class QuantityManagementAppApplication {
             return;
         }
 
+        //second quantity
+        System.out.println("enter second value:");
+        String strValue2 = br.readLine();
 
-        System.out.println("enter target unit:" + Arrays.toString(LengthUnit.values()));
+        System.out.println("enter second unit:" + Arrays.toString(LengthUnit.values()));
         String unit2 = br.readLine();
         LengthUnit lengthUnit2;
+        double value2;
         try {
             lengthUnit2 = LengthUnit.valueOf(unit2.toUpperCase());
+            value2 = Double.parseDouble(strValue2);
+            q2 = new QuantityLength(value2, lengthUnit2);
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid input. Please enter finite numeric values. " + e.getMessage());
+            return;
+        }
+
+
+        System.out.println("enter target unit:" + Arrays.toString(LengthUnit.values()));
+        String unit3 = br.readLine();
+        LengthUnit lengthUnit3;
+        try {
+            lengthUnit3 = LengthUnit.valueOf(unit3.toUpperCase());
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter numeric values.");
             return;
         }
-
-		QuantityLength targetLength = QuantityLength.convert(q1, lengthUnit2);
-		System.out.println("Converted value: "  + targetLength.getValue() + " " + targetLength.getLengthUnit().name() );
-
-        QuantityLength targetLengthAgain = QuantityLength.convert(value1, lengthUnit1,  lengthUnit2);
-        System.out.println("Converted value: "  + targetLengthAgain.getValue() + " " + targetLengthAgain.getLengthUnit().name() );
-
+        QuantityLength added = QuantityLength.add(q1, q2, lengthUnit3);
+        System.out.println("Total:  " + added.getValue() + " " + added.getLengthUnit().name());
 
     }
 

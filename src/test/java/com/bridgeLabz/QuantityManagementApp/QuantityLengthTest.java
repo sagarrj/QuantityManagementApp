@@ -348,4 +348,14 @@ public class QuantityLengthTest {
         });
 
     }
+
+
+    @Test
+    void addValues_DiffUnit_shouldReturnAddInReturnUnit(){
+        QuantityLength q1 = new QuantityLength(2, LengthUnit.YARD);
+        QuantityLength q2 = new QuantityLength(12, LengthUnit.INCH);
+        QuantityLength added = QuantityLength.add(q1, q2, LengthUnit.CENTIMETER);
+
+        assertEquals(213.0,added.getValue());
+    }
 }

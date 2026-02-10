@@ -2,6 +2,8 @@ package com.bridgeLabz.QuantityManagementApp;
 
 public class QuantityLength
 {
+
+    private final double EPSILON = 0.001;
     private double value;
     private LengthUnit lengthUnit;
 
@@ -31,6 +33,28 @@ public class QuantityLength
         double sourceInInch = length.value * length.lengthUnit.getToInch();
         return new QuantityLength( sourceInInch/ targetUnit.getToInch(), targetUnit);
     }
+
+    public static QuantityLength add(QuantityLength source1, QuantityLength source2, LengthUnit targetUnit){
+        QuantityLength convertedValue1 = convert(source1.value, source1.lengthUnit, targetUnit);
+        QuantityLength convertedValue2 = convert(source2.value, source2.lengthUnit, targetUnit);
+
+        double sum = Math.round(convertedValue1.value + convertedValue2.value);
+        return new QuantityLength(sum, targetUnit);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     @Override
