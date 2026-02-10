@@ -2,8 +2,7 @@ package com.bridgeLabz.QuantityManagementApp;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class QuantityLengthTest {
 
@@ -316,5 +315,37 @@ public class QuantityLengthTest {
 
         // Then
         assertTrue(result);
+    }
+
+    @Test
+    void convert_valueFromFeetToYard(){
+        QuantityLength converted = QuantityLength.convert(3, LengthUnit.FEET, LengthUnit.YARD);
+        assertEquals(1,converted.getValue());
+    }
+
+    @Test
+    void convert_valueYardToFeet(){
+        QuantityLength converted = QuantityLength.convert(1, LengthUnit.YARD, LengthUnit.FEET);
+        assertEquals(3,converted.getValue());
+    }
+
+
+    @Test
+    void double_isFinite_LargeNumber_ShouldThrowNumberFormatException (){
+        String expected = "Number Out of Range";
+
+        NumberFormatException exception = assertThrows(NumberFormatException.class, () -> {
+            new QuantityLength(Double.MAX_VALUE * 100000000 , LengthUnit.INCH);
+        });
+
+        assertTrue(exception.getMessage().contains(expected));
+    }
+
+    @Test
+    void double_isFinite_smallNumber_ShouldNotThrowException (){
+        assertDoesNotThrow( () -> {
+            new QuantityLength( 100000000 , LengthUnit.INCH);
+        });
+
     }
 }
