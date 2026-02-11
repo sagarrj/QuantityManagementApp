@@ -3,7 +3,7 @@ package com.bridgeLabz.QuantityManagementApp.weight;
 public enum WeightUnit {
     KILOGRAM(1.0),
     GRAM(1000.0),
-    POUND(0.453592);
+    POUND(2.20462);
 
     private final double toKg;
 
@@ -16,10 +16,10 @@ public enum WeightUnit {
     }
 
     public double convertToKg(double value){
-        return value * this.toKg;
+        return value / this.toKg;
     }
 
     public double convertFromKg(double value){
-        return value /  this.toKg;
+        return value *  this.toKg;
     }
 }
