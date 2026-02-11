@@ -1,4 +1,4 @@
-package com.bridgeLabz.QuantityManagementApp;
+package com.bridgeLabz.QuantityManagementApp.length;
 
 public enum LengthUnit {
     //Base Unit
