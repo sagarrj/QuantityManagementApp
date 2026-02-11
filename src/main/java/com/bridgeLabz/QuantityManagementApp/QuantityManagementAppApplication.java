@@ -13,7 +13,7 @@ public class QuantityManagementAppApplication {
 	}
 
 	private static void convertLength() throws IOException {
-        QuantityLength q1,q2;
+        Length q1,q2;
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         //first quantity
@@ -27,7 +27,7 @@ public class QuantityManagementAppApplication {
         try {
             lengthUnit1 = LengthUnit.valueOf(unit1.toUpperCase());
             value1 = Double.parseDouble(strValue1);
-            q1 = new QuantityLength(value1, lengthUnit1);
+            q1 = new Length(value1, lengthUnit1);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter finite numeric values. " + e.getMessage());
             return;
@@ -44,11 +44,14 @@ public class QuantityManagementAppApplication {
         try {
             lengthUnit2 = LengthUnit.valueOf(unit2.toUpperCase());
             value2 = Double.parseDouble(strValue2);
-            q2 = new QuantityLength(value2, lengthUnit2);
+            q2 = new Length(value2, lengthUnit2);
         } catch (NumberFormatException e) {
             System.out.println("Invalid input. Please enter finite numeric values. " + e.getMessage());
             return;
         }
+
+        Length addedInSource = q1.add(q2);
+        System.out.println("Total of sum In Source:  " + addedInSource.getValue() + " " + addedInSource.getUnit().name());
 
 
         System.out.println("enter target unit:" + Arrays.toString(LengthUnit.values()));
@@ -60,8 +63,10 @@ public class QuantityManagementAppApplication {
             System.out.println("Invalid input. Please enter numeric values.");
             return;
         }
-        QuantityLength added = QuantityLength.add(q1, q2, lengthUnit3);
-        System.out.println("Total:  " + added.getValue() + " " + added.getLengthUnit().name());
+
+        Length totalInTarget = q1.add(q2, lengthUnit3);
+        System.out.println("Sum ( in  " +   lengthUnit3.name()  + ") :" + totalInTarget.getValue());
+
 
     }
 

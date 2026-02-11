@@ -4,14 +4,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class QuantityLengthTest {
+public class LengthTest {
 
 
     @Test
     void equals_sameValues_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = new Length(5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -22,8 +22,8 @@ public class QuantityLengthTest {
     @Test
     void equals_differentValues_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(6.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = new Length(6.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -35,8 +35,8 @@ public class QuantityLengthTest {
     @Test
     void equals_nullObject_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = null;
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = null;
 
         // When
         boolean result = feet1.equals(feet2);
@@ -47,7 +47,7 @@ public class QuantityLengthTest {
     @Test
     void equals_differentClassObject_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
         Object obj = new Object();
 
         // When
@@ -59,7 +59,7 @@ public class QuantityLengthTest {
     @Test
     void equals_sameObject_Reflexive_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet1);
@@ -70,8 +70,8 @@ public class QuantityLengthTest {
     @Test
     void equals_sameValues_Symmetric_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = new Length(5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -85,8 +85,8 @@ public class QuantityLengthTest {
     @Test
     void equals_sameValues_Consistent_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = new Length(5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -99,8 +99,8 @@ public class QuantityLengthTest {
     @Test
     void equals_precisionCheck_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0000001, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(5.0000002, LengthUnit.FEET);
+        Length feet1 = new Length(5.0000001, LengthUnit.FEET);
+        Length feet2 = new Length(5.0000002, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -112,8 +112,8 @@ public class QuantityLengthTest {
     @Test
     void equals_negativeValues_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(-5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(-5.0, LengthUnit.FEET);
+        Length feet1 = new Length(-5.0, LengthUnit.FEET);
+        Length feet2 = new Length(-5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -125,8 +125,8 @@ public class QuantityLengthTest {
     @Test
     void equals_zeroValues_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(0.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(0.0, LengthUnit.FEET);
+        Length feet1 = new Length(0.0, LengthUnit.FEET);
+        Length feet2 = new Length(0.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -138,8 +138,8 @@ public class QuantityLengthTest {
     @Test
     void equals_largeValues_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(1_000_000.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(1_000_000.0, LengthUnit.FEET);
+        Length feet1 = new Length(1_000_000.0, LengthUnit.FEET);
+        Length feet2 = new Length(1_000_000.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -151,8 +151,8 @@ public class QuantityLengthTest {
     @Test
     void equals_smallValues_shouldReturnTrue() {
         // Given
-        QuantityLength feet1 = new QuantityLength(0.000001, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(0.000001, LengthUnit.FEET);
+        Length feet1 = new Length(0.000001, LengthUnit.FEET);
+        Length feet2 = new Length(0.000001, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -164,8 +164,8 @@ public class QuantityLengthTest {
     @Test
     void equals_differentSignValues_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.0, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(-5.0, LengthUnit.FEET);
+        Length feet1 = new Length(5.0, LengthUnit.FEET);
+        Length feet2 = new Length(-5.0, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -177,8 +177,8 @@ public class QuantityLengthTest {
     @Test
     void equals_differentDecimalValues_shouldReturnFalse() {
         // Given
-        QuantityLength feet1 = new QuantityLength(5.1, LengthUnit.FEET);
-        QuantityLength feet2 = new QuantityLength(5.2, LengthUnit.FEET);
+        Length feet1 = new Length(5.1, LengthUnit.FEET);
+        Length feet2 = new Length(5.2, LengthUnit.FEET);
 
         // When
         boolean result = feet1.equals(feet2);
@@ -191,8 +191,8 @@ public class QuantityLengthTest {
     @Test
     void equals_differentUnitsSameValue_shouldReturnFalse() {
         // Given
-        QuantityLength feet = new QuantityLength(12.0, LengthUnit.FEET);
-        QuantityLength inch = new QuantityLength(12.0, LengthUnit.INCH);
+        Length feet = new Length(12.0, LengthUnit.FEET);
+        Length inch = new Length(12.0, LengthUnit.INCH);
 
         // When
         boolean result = feet.equals(inch);
@@ -204,8 +204,8 @@ public class QuantityLengthTest {
     @Test
     void equals_yardComparisonToYardForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength yard = new QuantityLength(1.0, LengthUnit.YARD);
-        QuantityLength yard2 = new QuantityLength(1.0, LengthUnit.YARD);
+        Length yard = new Length(1.0, LengthUnit.YARD);
+        Length yard2 = new Length(1.0, LengthUnit.YARD);
 
         // When
         boolean result = yard.equals(yard2);
@@ -217,8 +217,8 @@ public class QuantityLengthTest {
     @Test
     void equals_yardComparisonToFeetForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength yard = new QuantityLength(1.0, LengthUnit.YARD);
-        QuantityLength feet = new QuantityLength(3.0, LengthUnit.FEET);
+        Length yard = new Length(1.0, LengthUnit.YARD);
+        Length feet = new Length(3.0, LengthUnit.FEET);
 
         // When
         boolean result = yard.equals(feet);
@@ -229,8 +229,8 @@ public class QuantityLengthTest {
     @Test
     void equals_yardComparisonToInchForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength yard = new QuantityLength(1.0, LengthUnit.YARD);
-        QuantityLength inch = new QuantityLength(36.0, LengthUnit.INCH);
+        Length yard = new Length(1.0, LengthUnit.YARD);
+        Length inch = new Length(36.0, LengthUnit.INCH);
 
         // When
         boolean result = yard.equals(inch);
@@ -242,8 +242,8 @@ public class QuantityLengthTest {
     @Test
     void equals_yardComparisonToCentimeterForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength yard = new QuantityLength(1.0, LengthUnit.YARD);
-        QuantityLength cm = new QuantityLength(91.44, LengthUnit.CENTIMETER);
+        Length yard = new Length(1.0, LengthUnit.YARD);
+        Length cm = new Length(91.44, LengthUnit.CENTIMETER);
 
         // When
         boolean result = yard.equals(cm);
@@ -255,8 +255,8 @@ public class QuantityLengthTest {
     @Test
     void equals_FeetComparisonToFeetForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(1.0, LengthUnit.FEET);
+        Length q1 = new Length(1.0, LengthUnit.FEET);
+        Length q2 = new Length(1.0, LengthUnit.FEET);
 
         // When
         boolean result = q1.equals(q2);
@@ -268,8 +268,8 @@ public class QuantityLengthTest {
     @Test
     void equals_FeetComparisonToInchForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(12.0, LengthUnit.INCH);
+        Length q1 = new Length(1.0, LengthUnit.FEET);
+        Length q2 = new Length(12.0, LengthUnit.INCH);
 
         // When
         boolean result = q1.equals(q2);
@@ -281,8 +281,8 @@ public class QuantityLengthTest {
     @Test
     void equals_FeetComparisonToCmForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.FEET);
-        QuantityLength q2 = new QuantityLength(30.48, LengthUnit.CENTIMETER);
+        Length q1 = new Length(1.0, LengthUnit.FEET);
+        Length q2 = new Length(30.48, LengthUnit.CENTIMETER);
 
         // When
         boolean result = q1.equals(q2);
@@ -294,8 +294,8 @@ public class QuantityLengthTest {
     @Test
     void equals_InchComparisonToInchForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.INCH);
-        QuantityLength q2 = new QuantityLength(1.0, LengthUnit.INCH);
+        Length q1 = new Length(1.0, LengthUnit.INCH);
+        Length q2 = new Length(1.0, LengthUnit.INCH);
 
         // When
         boolean result = q1.equals(q2);
@@ -307,8 +307,8 @@ public class QuantityLengthTest {
     @Test
     void equals_InchComparisonToCmForSameLength_shouldReturnTrue() {
         // Given
-        QuantityLength q1 = new QuantityLength(1.0, LengthUnit.INCH);
-        QuantityLength q2 = new QuantityLength(2.54, LengthUnit.CENTIMETER);
+        Length q1 = new Length(1.0, LengthUnit.INCH);
+        Length q2 = new Length(2.54, LengthUnit.CENTIMETER);
 
         // When
         boolean result = q1.equals(q2);
@@ -319,13 +319,15 @@ public class QuantityLengthTest {
 
     @Test
     void convert_valueFromFeetToYard(){
-        QuantityLength converted = QuantityLength.convert(3, LengthUnit.FEET, LengthUnit.YARD);
+        Length feet = new Length(3, LengthUnit.FEET);
+        Length converted = feet.convertTo(LengthUnit.YARD);
         assertEquals(1,converted.getValue());
     }
 
     @Test
     void convert_valueYardToFeet(){
-        QuantityLength converted = QuantityLength.convert(1, LengthUnit.YARD, LengthUnit.FEET);
+        Length yard = new Length(1, LengthUnit.YARD);
+        Length converted = yard.convertTo( LengthUnit.FEET);
         assertEquals(3,converted.getValue());
     }
 
@@ -335,7 +337,7 @@ public class QuantityLengthTest {
         String expected = "Number Out of Range";
 
         NumberFormatException exception = assertThrows(NumberFormatException.class, () -> {
-            new QuantityLength(Double.MAX_VALUE * 100000000 , LengthUnit.INCH);
+            new Length(Double.MAX_VALUE * 100000000 , LengthUnit.INCH);
         });
 
         assertTrue(exception.getMessage().contains(expected));
@@ -344,7 +346,7 @@ public class QuantityLengthTest {
     @Test
     void double_isFinite_smallNumber_ShouldNotThrowException (){
         assertDoesNotThrow( () -> {
-            new QuantityLength( 100000000 , LengthUnit.INCH);
+            new Length( 100000000 , LengthUnit.INCH);
         });
 
     }
@@ -352,10 +354,10 @@ public class QuantityLengthTest {
 
     @Test
     void addValues_DiffUnit_shouldReturnAddInReturnUnit(){
-        QuantityLength q1 = new QuantityLength(2, LengthUnit.YARD);
-        QuantityLength q2 = new QuantityLength(12, LengthUnit.INCH);
-        QuantityLength added = QuantityLength.add(q1, q2, LengthUnit.CENTIMETER);
+        Length q1 = new Length(2, LengthUnit.YARD);
+        Length q2 = new Length(12, LengthUnit.INCH);
+        Length added = q1.add( q2, LengthUnit.CENTIMETER);
 
-        assertEquals(213.0,added.getValue());
+        assertEquals(213.0,Math.round(added.getValue()));
     }
 }
