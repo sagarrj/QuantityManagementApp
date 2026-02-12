@@ -1,7 +1,5 @@
-package com.bridgeLabz.QuantityManagementApp;
+package com.bridgeLabz.QuantityManagementApp.length;
 
-import com.bridgeLabz.QuantityManagementApp.length.Length;
-import com.bridgeLabz.QuantityManagementApp.length.LengthUnit;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
