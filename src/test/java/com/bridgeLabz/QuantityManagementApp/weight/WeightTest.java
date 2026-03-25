@@ -25,6 +25,7 @@ class WeightTest {
         assertEquals(1,converted.getValue());
     }
 
+
     @Test
     void convertTo_1KgToKg_ShouldReturn1Kg() {
         Weight weight = new Weight(1, WeightUnit.KILOGRAM);
