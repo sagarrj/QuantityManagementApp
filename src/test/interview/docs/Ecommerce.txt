@@ -1,0 +1,197 @@
+/*
+We are developing an e-commerce analytics system that tracks products, customer purchases, and sales data.
+
+The program includes three classes: `Product`, `Purchase`, and `SalesAnalyzer`.
+
+Classes:
+* The `Product` class represents a product available for sale.
+* The `Purchase` class holds information about a customer's purchase transaction.
+* The `SalesAnalyzer` class manages all purchases and provides analytical insights.
+
+To begin with, we present you with two tasks:
+1-1) Read through and understand the code below. Please take as much time as necessary, and feel free to run the code.
+1-2) The test for SalesAnalyzer is not passing due to a bug in the code. Make the necessary changes to SalesAnalyzer to fix the bug.
+*/
+
+/*
+2) We want to add a new function called "getTopSellingProduct" to the SalesAnalyzer class.
+This function analyzes all purchases and returns the product that has been purchased the most times
+(by quantity, not by number of transactions) along with the total quantity sold.
+
+For example, if purchases include:
+- Product A: 5 units in transaction 1, 3 units in transaction 2 = 8 total
+- Product B: 10 units in transaction 3 = 10 total
+- Product C: 2 units in transaction 4, 2 units in transaction 5 = 4 total
+
+The function should return [Product B object, 10].
+
+To assist you in testing this new function, we have provided the testGetTopSellingProduct function.
+*/
+
+import java.io.*;
+import java.util.*;
+import org.junit.*;
+
+class Product {
+    /** Data about a product. */
+    String productId;
+    String name;
+    String category;
+    double price;
+
+    Product(String productId, String name, String category, double price) {
+        this.productId = productId;
+        this.name = name;
+        this.category = category;
+        this.price = price;
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (this == other) return true;
+        if (other == null || getClass() != other.getClass()) return false;
+        Product product = (Product) other;
+        return productId.equals(product.productId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(productId);
+    }
+}
+
+class Purchase {
+    /** Data about a customer purchase. */
+    Product product;
+    int quantity;
+    String customerId;
+    String purchaseDate;    // Format: "YYYY-MM-DD"
+    
+    Purchase(Product product, int quantity, String customerId, String purchaseDate) {
+        this.product = product;
+        this.quantity = quantity;
+        this.customerId = customerId;
+        this.purchaseDate = purchaseDate;
+    }
+
+    double getTotalAmount() {
+        return product.price * quantity;
+    }
+}
+
+class SalesAnalyzer {
+    /**
+     * Manages purchase data and provides analytical insights.
+     */
+    ArrayList<Purchase> purchases = new ArrayList<>();
+
+    SalesAnalyzer() {
+    }
+
+    void addPurchase(Purchase purchase) {
+        purchases.add(purchase);
+    }
+
+    int getTotalPurchases() {
+        return purchases.size();
+    }
+
+    double getTotalRevenue() {
+        return purchases.stream().mapToDouble(p -> p.getTotalAmount()).sum();
+    }
+
+    int getTotalItemsSold() {
+        return purchases.stream().mapToInt(p -> p.quantity).sum();
+    }
+
+    double getAveragePurchaseValue() {
+        /** 
+         * Returns the average value per purchase transaction.
+         * BUG: This method has a bug - fix it!
+         */
+        return getTotalRevenue() / getTotalPurchases();
+    }
+
+    int getUniqueCustomers() {
+        /** Returns the count of unique customers who made purchases. */
+        return (int) purchases.stream()
+            .map(p -> p.customerId)
+            .distinct()
+            .count();
+    }
+
+    public Object[] getTopSellingProduct() {
+        // Write your code here to solve this problem
+        return null;
+    }
+}
+
+public class Solution {
+    public static void main(String[] args) {
+        testPurchase();
+        testSalesAnalyzer();
+        testGetTopSellingProduct();
+    }
+
+    public static void testPurchase() {
+        System.out.println("Running testPurchase");
+        Product product = new Product("P001", "Laptop", "Electronics", 999.99);
+        Purchase purchase = new Purchase(product, 2, "C001", "2024-02-01");
+
+        Assert.assertEquals(2, purchase.quantity);
+        Assert.assertEquals(1999.98, purchase.getTotalAmount(), 0.01);
+    }
+
+    public static void testSalesAnalyzer() {
+        System.out.println("Running testSalesAnalyzer");
+        SalesAnalyzer analyzer = new SalesAnalyzer();
+
+        Assert.assertEquals(0, analyzer.getTotalPurchases());
+        Assert.assertEquals(0.0, analyzer.getTotalRevenue(), 0.01);
+
+        Product p1 = new Product("P001", "Laptop", "Electronics", 1000.0);
+        Product p2 = new Product("P002", "Mouse", "Accessories", 25.0);
+        Product p3 = new Product("P003", "Keyboard", "Accessories", 75.0);
+
+        Purchase pur1 = new Purchase(p1, 1, "C001", "2024-02-01");
+        Purchase pur2 = new Purchase(p2, 2, "C002", "2024-02-02");
+        Purchase pur3 = new Purchase(p3, 1, "C001", "2024-02-03");
+
+        analyzer.addPurchase(pur1);
+        analyzer.addPurchase(pur2);
+        analyzer.addPurchase(pur3);
+
+        Assert.assertEquals(3, analyzer.getTotalPurchases());
+        Assert.assertEquals(1125.0, analyzer.getTotalRevenue(), 0.01);
+        Assert.assertEquals(4, analyzer.getTotalItemsSold());
+        Assert.assertEquals(375.0, analyzer.getAveragePurchaseValue(), 0.01);
+        Assert.assertEquals(2, analyzer.getUniqueCustomers());
+    }
+
+    public static void testGetTopSellingProduct() {
+        System.out.println("Running testGetTopSellingProduct");
+        SalesAnalyzer analyzer = new SalesAnalyzer();
+
+        Assert.assertNull(analyzer.getTopSellingProduct());
+
+        Product p1 = new Product("P001", "Product A", "Category1", 10.0);
+        Product p2 = new Product("P002", "Product B", "Category2", 20.0);
+        Product p3 = new Product("P003", "Product C", "Category1", 15.0);
+
+        Purchase pur1 = new Purchase(p1, 5, "C001", "2024-02-01");
+        Purchase pur2 = new Purchase(p1, 3, "C002", "2024-02-02");
+        Purchase pur3 = new Purchase(p2, 10, "C003", "2024-02-03");
+        Purchase pur4 = new Purchase(p3, 2, "C001", "2024-02-04");
+        Purchase pur5 = new Purchase(p3, 2, "C002", "2024-02-05");
+
+        analyzer.addPurchase(pur1);
+        analyzer.addPurchase(pur2);
+        analyzer.addPurchase(pur3);
+        analyzer.addPurchase(pur4);
+        analyzer.addPurchase(pur5);
+
+        Object[] result = analyzer.getTopSellingProduct();
+        Assert.assertEquals(p2, result[0]);
+        Assert.assertEquals(10, result[1]);
+    }
+}

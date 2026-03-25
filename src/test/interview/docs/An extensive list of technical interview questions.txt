@@ -1,0 +1,117 @@
+An extensive list of technical interview questions covering Java, Spring Boot, Microservices, Kafka, AWS, Azure, Kubernetes, Docker, and Hibernate.
+
+
+Java (8, 17, 21, 22) 
+
+What is Meta Space 
+GC Types in Java 8 
+What is a class loader 
+GC algorithm 
+Java 11, Java 17 
+What are sealed classes, and when to use them? 
+Explain records in Java. 
+What changes came with Java 21 (Virtual Threads)? 
+What’s new in Java 22 regarding language and JVM improvements? 
+How does the garbage collector differ across Java 8, 17, and 21? 
+ 
+
+Spring Boot 
+
+Explain auto-configuration. 
+How does dependency injection work in Spring? 
+What are profiles, and how do you use them? 
+What is the lifecycle of a Spring bean? 
+ 
+
+Microservices 
+
+How do you design a microservices architecture? 
+What is service discovery? 
+Explain API Gateway patterns. 
+What is the circuit breaker design pattern? 
+How do you handle distributed transactions? 
+What is eventual consistency? 
+How do services communicate—sync vs async? 
+What is centralised configuration management? 
+Explain observability in microservices. 
+ 
+
+Kafka 
+
+What is Kafka, and why is it used? 
+Explain Kafka architecture: broker, topic, partition. 
+What is a consumer group? 
+How does Kafka ensure message durability? 
+What is ISR (In-Sync Replicas)? 
+Explain Kafka offset management. 
+What is the role of Zookeeper (or KRaft in newer versions)? 
+Explain producer acks levels. 
+What is log compaction? 
+How to achieve exactly-once processing? 
+ 
+
+AWS 
+
+What is EC2, and when do you use it? 
+Difference between S3 and EBS. 
+What is IAM, and what are its components? 
+What is Lambda, and how does it scale? 
+How does API Gateway work? 
+What is VPC? 
+Explain security groups vs NACLs. 
+What is CloudWatch used for? 
+Explain autoscaling groups. 
+What is an Elastic Load Balancer? 
+ 
+
+Azure 
+
+What is an Azure VM? 
+Difference between Azure Blob Storage and Disk Storage. 
+What are Azure Functions? 
+Explain Azure API Management. 
+What is Azure Kubernetes Service (AKS)? 
+What is Azure VNet? 
+What is an Azure DevOps pipeline? 
+Explain RBAC in Azure. 
+What is Azure Service Bus? 
+What is Application Insights? 
+ 
+
+Kubernetes 
+
+What is Kubernetes, and why is it used? 
+What is a Pod? 
+Difference between Deployment and StatefulSet. 
+What is a Service in Kubernetes? 
+Explain ConfigMap vs Secret. 
+What is Kubernetes Ingress? 
+What is a namespace? 
+Explain liveness and readiness probes. 
+How does horizontal pod autoscaling work? 
+What is etcd? 
+ 
+
+Docker 
+
+What is Docker, and how does it work? 
+What is the difference between an image and a container? 
+What is a Docker file? 
+Explain Docker layers. 
+What is Docker Compose? 
+What is a multi-stage build? 
+How does Docker networking work? 
+Difference between bind mount and volume. 
+What is Docker registry? 
+How do you optimise Docker images? 
+ 
+ 
+Hibernate 
+ 
+Explain one-to-one mapping in Hibernate. 
+Explain one-to-many mapping and its real-world use case. 
+What is many-to-many mapping? 
+What is the difference between mappedBy and owning side? 
+What is an embeddable object? 
+What is inheritance mapping in Hibernate? 
+What are the strategies: Single Table, Joined, Table Per Class? 
